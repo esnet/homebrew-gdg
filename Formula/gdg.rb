@@ -5,11 +5,11 @@
 class Gdg < Formula
   desc "Grafana Dash-n-Grab (GDG) -- Dashboard/DataSource Manager for grafana supporting backup/restore to local filesystem, s3, gcs, azure, and other S3 compatible storage engines."
   homepage "https://software.es.net/gdg"
-  version "0.5.2"
+  version "0.6.0"
 
   on_macos do
-    url "https://github.com/esnet/gdg/releases/download/v0.5.2/gdg_Darwin_all.tar.gz"
-    sha256 "f4b77de246ce699919d1af751455bc94f947f7990a7e5bff729c23be3f0b0e77"
+    url "https://github.com/esnet/gdg/releases/download/v0.6.0/gdg_Darwin_all.tar.gz"
+    sha256 "ba7ff7f6471a565f97e447ebde087f9cfbe4fa839d930f84e56671835553a2fa"
 
     def install
       bin.install "gdg"
@@ -18,18 +18,18 @@ class Gdg < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/esnet/gdg/releases/download/v0.5.2/gdg_Linux_x86_64.tar.gz"
-      sha256 "34cdbe3ebf3cc702ea97274c4f4e26fde4d401278519ae5652ccb457bb073543"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/esnet/gdg/releases/download/v0.6.0/gdg_Linux_arm64.tar.gz"
+      sha256 "24a2048a956f164397abe4816b4e4c2b44e7226ca54011e48687619e887d2241"
 
       def install
         bin.install "gdg"
         bin.install "gdg-generate"
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/esnet/gdg/releases/download/v0.5.2/gdg_Linux_arm64.tar.gz"
-      sha256 "ba0c5f385b3e2db4ca32b30f77b64834ea6470f8087719e246fe4da396b1ff5a"
+    if Hardware::CPU.intel?
+      url "https://github.com/esnet/gdg/releases/download/v0.6.0/gdg_Linux_x86_64.tar.gz"
+      sha256 "07e5c4334fb62aa1763aa3af0918a028cf43632c24e47b7856ca0733afd01b38"
 
       def install
         bin.install "gdg"
