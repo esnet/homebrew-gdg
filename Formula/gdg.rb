@@ -5,11 +5,11 @@
 class Gdg < Formula
   desc "Grafana Dash-n-Grab (GDG) -- Dashboard/DataSource Manager for grafana supporting backup/restore to local filesystem, s3, gcs, azure, and other S3 compatible storage engines."
   homepage "https://software.es.net/gdg"
-  version "0.6.0"
+  version "0.7.1"
 
   on_macos do
-    url "https://github.com/esnet/gdg/releases/download/v0.6.0/gdg_Darwin_all.tar.gz"
-    sha256 "ba7ff7f6471a565f97e447ebde087f9cfbe4fa839d930f84e56671835553a2fa"
+    url "https://github.com/esnet/gdg/releases/download/v0.7.1/gdg_Darwin_all.tar.gz"
+    sha256 "9719c1d09172d56516f23c8e3405f9e550cc1173f651182aa8a59b1f91db2f81"
 
     def install
       bin.install "gdg"
@@ -18,22 +18,26 @@ class Gdg < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/esnet/gdg/releases/download/v0.6.0/gdg_Linux_arm64.tar.gz"
-      sha256 "24a2048a956f164397abe4816b4e4c2b44e7226ca54011e48687619e887d2241"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/esnet/gdg/releases/download/v0.7.1/gdg_Linux_x86_64.tar.gz"
+        sha256 "052b32013d529628f14b3e69fff2e4e0ca68a732e4b925d58fedeafbc23245cc"
 
-      def install
-        bin.install "gdg"
-        bin.install "gdg-generate"
+        def install
+          bin.install "gdg"
+          bin.install "gdg-generate"
+        end
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/esnet/gdg/releases/download/v0.6.0/gdg_Linux_x86_64.tar.gz"
-      sha256 "07e5c4334fb62aa1763aa3af0918a028cf43632c24e47b7856ca0733afd01b38"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/esnet/gdg/releases/download/v0.7.1/gdg_Linux_arm64.tar.gz"
+        sha256 "68eeab8e6093a621a4467f942b762f01a432d501d0d362f0d3d8a5421a9917d2"
 
-      def install
-        bin.install "gdg"
-        bin.install "gdg-generate"
+        def install
+          bin.install "gdg"
+          bin.install "gdg-generate"
+        end
       end
     end
   end
