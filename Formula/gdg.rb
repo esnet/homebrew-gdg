@@ -5,11 +5,11 @@
 class Gdg < Formula
   desc "Grafana Dash-n-Grab (GDG) -- Dashboard/DataSource Manager for grafana supporting backup/restore to local filesystem, s3, gcs, azure, and other S3 compatible storage engines."
   homepage "https://software.es.net/gdg"
-  version "0.7.2"
+  version "0.8.0"
 
   on_macos do
-    url "https://github.com/esnet/gdg/releases/download/v0.7.2/gdg_Darwin_all.tar.gz"
-    sha256 "7fe5432216d1d6a0e791a5351547fda2cc8d8df4ec6240cd720c8e126365bc1e"
+    url "https://github.com/esnet/gdg/releases/download/v0.8.0/gdg_Darwin_all.tar.gz"
+    sha256 "737086e2dd47b2baf8d3bfe08edba6192696d0c557ee95982ca1573b84dc6660"
 
     def install
       bin.install "gdg"
@@ -18,26 +18,20 @@ class Gdg < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/esnet/gdg/releases/download/v0.7.2/gdg_Linux_x86_64.tar.gz"
-        sha256 "2f493f02e2297d98c8669b66525e0a2431918710eeda31e4a9aa9de9b88124a7"
-
-        def install
-          bin.install "gdg"
-          bin.install "gdg-generate"
-        end
+    if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
+      url "https://github.com/esnet/gdg/releases/download/v0.8.0/gdg_Linux_x86_64.tar.gz"
+      sha256 "1b281403b47d162c2265a6c79c99d68da59c9cbaf75472d161a3e7eceedaab5e"
+      def install
+        bin.install "gdg"
+        bin.install "gdg-generate"
       end
     end
-    if Hardware::CPU.arm?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/esnet/gdg/releases/download/v0.7.2/gdg_Linux_arm64.tar.gz"
-        sha256 "6aaa6d93daa27d9489fdcfb3f7f318ad8f2b0c022c0cc384feb3fd09038d775c"
-
-        def install
-          bin.install "gdg"
-          bin.install "gdg-generate"
-        end
+    if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
+      url "https://github.com/esnet/gdg/releases/download/v0.8.0/gdg_Linux_arm64.tar.gz"
+      sha256 "d18210b67b36911686eb9fcebb6569020c4d9551bc5c339e5289ed4c1c81845a"
+      def install
+        bin.install "gdg"
+        bin.install "gdg-generate"
       end
     end
   end
