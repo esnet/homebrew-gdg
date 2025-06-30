@@ -5,7 +5,9 @@
 class Gdg < Formula
   desc "Grafana Dash-n-Grab (GDG) -- Dashboard/DataSource Manager for grafana supporting backup/restore to local filesystem, s3, gcs, azure, and other S3 compatible storage engines."
   homepage "https://software.es.net/gdg"
-  version "0.8.0"
+  version "0.8.1"
+  disable! date: "2025-06-30", because: "the cask should be used now instead", replacement_cask: "gdg"
+
 
   on_macos do
     url "https://github.com/esnet/gdg/releases/download/v0.8.0/gdg_Darwin_all.tar.gz"
