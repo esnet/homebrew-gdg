@@ -3,7 +3,7 @@ cask "gdg" do
   name "gdg"
   desc "Grafana Dash-n-Grab (GDG) -- Dashboard/DataSource Manager for grafana supporting backup/restore to local filesystem, s3, gcs, azure, and other S3 compatible storage engines."
   homepage "https://software.es.net/gdg"
-  version "0.9.1"
+  version "0.9.2"
 
   livecheck do
     skip "Auto-generated on release."
@@ -13,17 +13,17 @@ cask "gdg" do
 
   on_macos do
     url "https://github.com/esnet/gdg/releases/download/v#{version}/gdg_Darwin_all.tar.gz"
-    sha256 "8a26394dc48cf08f51ab38f3b9372fb85a2408254c7fe96b53a1e79a262ee28d"
+    sha256 "2174ae2c92a31058283873e5093a5f82ce44ed25b7ce95282341cb3cc99b235e"
   end
 
   on_linux do
     on_intel do
       url "https://github.com/esnet/gdg/releases/download/v#{version}/gdg_Linux_x86_64.tar.gz"
-      sha256 "57e1c190823b336294a8bdc0b0f10ae4c58f73f74764adfd589e046cca3b6e7b"
+      sha256 "eade9b07a3f8ad01787715f93f1966b32301f5baf7d827d52d6b16dd4dfb8613"
     end
     on_arm do
       url "https://github.com/esnet/gdg/releases/download/v#{version}/gdg_Linux_arm64.tar.gz"
-      sha256 "4027e3869be106cdfbd4bb0b02a2729d024516f7d40c6cadb7df9333414367b6"
+      sha256 "3a5b1c90df74da2bcf77890d58c4848b69c8c1ea30378021db8689bafb8fb565"
     end
   end
 
